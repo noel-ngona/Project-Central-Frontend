@@ -1,2 +1,47 @@
 @import './base.css';
 @import "tailwindcss";
+
+@font-face {
+  font-family: "helpdesk-font";
+  src: url("./fonts/PTSans-Regular.ttf");
+}
+@theme {
+  --color-project-green : oklch(47.04% 0.0749 192.44);
+  --color-project-blue : oklch(27.85% 0.0564 249.75);
+  --color-project-dark-green : oklch(32.94% 0.0485 192.97);
+  --font-secondary: "helpdesk-font", helvetica, arial, sans-serif;
+
+}
+
+@layer base {
+  body {
+    font-family: var(--font-secondary);
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+  }
+
+  a {
+    color: var(--color-project-blue);
+  }
+
+  .btn-primary {
+    background-color: var(--color-project-green);
+    color: white;
+  }
+}
+@layer components {
+  .btn-secondary {
+    background-color: var(--color-project-dark-green);
+    color: white;
+  }
+
+  .btn-link {
+    color: var(--color-project-blue);
+    text-decoration: underline;
+  }
+}
+

@@ -1,31 +1,55 @@
 <script setup lang="ts">
-const handleClick = () => {
-  console.log('Button clicked!')
-}
+import projectManger from "@/assets/images/project_central_homepage.jpg"
+
+
+
 </script>
 
 <template>
-    <div class="min-h-screen bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center p-6">
-        <div class="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full space-y-6 transform hover:scale-105 transition-transform">
-            <h1 class="text-4xl font-bold text-center text-gray-800 mb-8 animate-pulse">
-                Test Page
-            </h1>
-            <div class="space-y-4">
-                <div class="bg-yellow-200 p-4 rounded-md hover:bg-yellow-300">
-                    <p class="text-sm font-semibold text-gray-700">
-                        If you can see styled elements, Tailwind is working! 🎉
-                    </p>
-                </div>
-                <button 
-                    @click="handleClick" 
-                    class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Fancy Button
-                </button>
-            </div>
+  <div class="h-screen flex">
+
+
+    <!-- Right Side (Login Form) -->
+    <div class="flex-1 flex items-center justify-center ">
+      <div class="w-full max-w-md p-8">
+        <h2 class="text-3xl font-semibold text-stone-600 mb-6 text-center">Login</h2>
+
+        <form >
+          <!-- Email Field -->
+          <div class="mb-4">
+            <label for="email" class="block font-medium mb-2">Email</label>
+            <input type="text" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Enter your email" required>
+          </div>
+
+          <!-- Password Field -->
+          <div class="mb-4">
+            <label for="password" class="block font-medium mb-2">Password</label>
+            <input type="password" id="password"  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Enter your password" required>
+          </div>
+
+          <!-- Login Button -->
+          <button type="submit" class="w-full bg-teal-700 text-white py-2 rounded-lg hover:bg-teal-700 transition">
+            Login
+          </button>
+        </form>
+
+        <!-- Footer Links -->
+        <div class="mt-4 text-center">
+          <p class="text-sm text-gray-600">
+            Don't have an account?
+            <a href="#" class="text-teal-600 hover:underline">Sign up</a>
+          </p>
         </div>
+      </div>
     </div>
+
+    <!-- Left Side (Image/Welcome Section) -->
+    <div class="flex-1 bg-cover bg-center m-6 rounded-xl hidden lg:block" >
+      <img :src="projectManger" alt="">
+    </div>
+  </div>
 </template>
 
 <style scoped>
+
 </style>
