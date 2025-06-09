@@ -16,7 +16,6 @@ export const useAuthStore = defineStore('auth', {
                 const response = await api.post('/auth/login', { username, password })
                 const accessToken = response.data.access
                 this.user = response.data.user
-                console.log(response.data)
 
                 localStorage.setItem('accessToken', accessToken)
                 this.router.push('/')

@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth'
+import api from '@/services/api'
 
 const authStore = useAuthStore()
+
+api.get('/auth/me').then((response) => {
+  authStore.user = response.data
+})
+
 
 async function logout() {
   await authStore.logout()
