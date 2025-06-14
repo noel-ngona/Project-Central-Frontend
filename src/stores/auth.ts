@@ -28,6 +28,7 @@ export const useAuthStore = defineStore('auth', {
             try{
                 await api.post('/auth/logout')
                 localStorage.removeItem('accessToken')
+                this.router.push('/login')
             }catch(error){
                 console.error(error)
             }
