@@ -32,6 +32,29 @@ export const useAuthStore = defineStore('auth', {
             }catch(error){
                 console.error(error)
             }
+        },
+        async getUser() {
+            if (this.user && this.user.username) {
+                return this.user
+            } else {
+                const userData = await this.checkAuth()
+                if (userData && userData.username) {
+                    this.user = userData
+                    return userData
+                } else {
+                    // Optionally handle unauthenticated state
+                    return { username: '' }
+                }
+            }
+        },
+        async checkAuth() {
+            try {
+                const response = await api.get('/auth/me')
+                return response.data
+            } catch (error) {
+                console.error(error)
+                return null
+            }
         }
     }
 })
