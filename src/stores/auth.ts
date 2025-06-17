@@ -22,6 +22,7 @@ export const useAuthStore = defineStore('auth', {
                 
             } catch (error) {
                 console.error(error)
+                return error.response.data
             }
         },
         async logout() {
@@ -31,7 +32,7 @@ export const useAuthStore = defineStore('auth', {
                 this.router.push('/login')
             }catch(error){
                 console.error(error)
-            }
+                }
         },
         async getUser() {
             if (this.user && this.user.username) {

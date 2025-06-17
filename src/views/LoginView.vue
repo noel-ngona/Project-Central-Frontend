@@ -2,17 +2,24 @@
 import projectManger from "@/assets/images/project_central_homepage.jpg"
 import { reactive } from "vue"
 import { useAuthStore } from "@/stores/auth"
+import ClipLoader from "vue-spinner/src/ClipLoader.vue"
+import { ref } from "vue"
 
 const authStore = useAuthStore()
 
 const obj = reactive({
     username: "",
     password: "",
+    response: {
+        error: ""
+    }
 })
 
-
+const loading = ref(false)
 async function login() {
-   await authStore.login(obj.username, obj.password)
+   loading.value = true
+   obj.response = await authStore.login(obj.username, obj.password)
+   loading.value = false
 }
 </script>
 
@@ -37,10 +44,19 @@ async function login() {
             <label for="password" class="block font-medium mb-2">Password</label>
             <input type="password" id="password" v-model="obj.password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Enter your password" required>
           </div>
+          
+          <p v-if="obj.response.error" class="text-red-500 mb-4 text-sm">
+            {{ obj.response.error }}
+          </p>
 
           <!-- Login Button -->
           <button type="submit" class="w-full bg-teal-700 text-white py-2 rounded-lg hover:bg-teal-700 transition">
-            Login
+            <span class="flex items-center justify-center w-full h-full" v-if="loading">
+              <ClipLoader size="20px" class="mt-1" />
+            </span>
+            <div v-else>
+              Login
+            </div>
           </button>
         </form>
 

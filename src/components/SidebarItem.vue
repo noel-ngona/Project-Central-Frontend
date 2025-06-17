@@ -11,7 +11,7 @@ const handleLogOut = async () => {
 <template>
   <aside class="w-64 bg-slate-50  flex flex-col">
     <div class="p-4 text-xl font-bold ">
-      Helpdesk
+      Project Central
     </div>
     <nav class="flex-1 p-4 space-y-2">
       <RouterLink to="/" class="block py-2 px-4 rounded-xl hover:bg-cyan-600 hover:text-slate-50 flex gap-2" :class="{ 'bg-cyan-600 text-stone-50': $route.path === '/' }">
