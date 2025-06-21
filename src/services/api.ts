@@ -41,7 +41,7 @@ api.interceptors.response.use(
     return response
   },
   async (error) => {
-    const publicUrls = ['/auth/login', '/auth/refresh']
+    const publicUrls = ['/auth/login', '/auth/refresh','/auth/password/reset']
     const originalRequest = error.config
     if (
       error.response?.status === 401 &&
@@ -57,7 +57,6 @@ api.interceptors.response.use(
         router.push('/login')
       }
     }
-    router.push('/login')
     return Promise.reject(error)
   },
 )

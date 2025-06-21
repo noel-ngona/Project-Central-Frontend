@@ -56,6 +56,15 @@ export const useAuthStore = defineStore('auth', {
                 console.error(error)
                 return null
             }
+        },
+        async resetPassword(email: string){
+            try{
+                const response = await api.post('/auth/password/reset', {email})
+                return response.data
+            } catch (error) {
+                console.error(error)
+                return error.response.data
+            }
         }
     }
 })

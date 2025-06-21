@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import projectManger from "@/assets/images/project_central_homepage.jpg"
 import { reactive } from "vue"
 import { useAuthStore } from "@/stores/auth"
 import ClipLoader from "vue-spinner/src/ClipLoader.vue"
@@ -24,11 +23,7 @@ async function login() {
 </script>
 
 <template>
-  <div class="h-screen flex">
-
-
-    <!-- Right Side (Login Form) -->
-    <div class="flex-1 flex items-center justify-center ">
+  <div class="flex-1 flex items-center justify-center ">
       <div class="w-full max-w-md p-8">
         <h2 class="text-3xl font-semibold text-stone-600 mb-6 text-center">Login</h2>
 
@@ -63,18 +58,12 @@ async function login() {
         <!-- Footer Links -->
         <div class="mt-4 text-center">
           <p class="text-sm text-gray-600">
-            Don't have an account?
-            <a href="#" class="text-teal-600 hover:underline">Sign up</a>
+            Forgot your password?
+            <router-link to="/reset-password" class="text-teal-600 hover:underline">Click here to reset</router-link>
           </p>
         </div>
       </div>
     </div>
-
-    <!-- Left Side (Image/Welcome Section) -->
-    <div class="flex-1 bg-cover bg-center m-6 rounded-xl hidden lg:block" >
-      <img :src="projectManger" alt="">
-    </div>
-  </div>
 </template>
 
 <style scoped>
