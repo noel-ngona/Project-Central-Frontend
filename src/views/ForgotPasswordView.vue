@@ -31,7 +31,7 @@ async function resetPassword() {
           <!-- Email Field -->
           <div class="mb-4">
             <label for="email" class="block font-medium mb-2">Email</label>
-            <input type="text" id="username" v-model="obj.email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Enter your username" required>
+            <input type="text" id="username" v-model="obj.email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Enter your username" required>
           </div>
 
          
@@ -50,7 +50,7 @@ async function resetPassword() {
             <span class="sr-only">Success</span>
             <div>{{ obj.response.message }}</div>
           </div>
-          <button type="submit" class="w-full bg-teal-700 text-white py-2 rounded-lg hover:bg-teal-700 transition">
+          <button type="submit" class="w-full bg-cyan-700 text-white py-2 rounded-lg hover:bg-cyan-700 transition">
             <span class="flex items-center justify-center w-full h-full" v-if="loading">
               <ClipLoader size="20px" class="mt-1" />
             </span>
@@ -63,7 +63,7 @@ async function resetPassword() {
         <!-- Footer Links -->
         <div class="mt-4 text-center">
           <p class="text-sm text-gray-600">
-            <router-link to="/login" class="text-teal-600 hover:underline">Back to Login</router-link>
+            <router-link to="/login" class="text-cyan-600 hover:underline">Back to Login</router-link>
           </p>
         </div>
       </div>

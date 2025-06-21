@@ -31,21 +31,25 @@ async function login() {
           <!-- Email Field -->
           <div class="mb-4">
             <label for="email" class="block font-medium mb-2">Username</label>
-            <input type="text" id="username" v-model="obj.username" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Enter your username" required>
+            <input type="text" id="username" v-model="obj.username" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Enter your username" required>
           </div>
 
           <!-- Password Field -->
           <div class="mb-4">
             <label for="password" class="block font-medium mb-2">Password</label>
-            <input type="password" id="password" v-model="obj.password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Enter your password" required>
+            <input type="password" id="password" v-model="obj.password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Enter your password" required>
           </div>
           
-          <p v-if="obj.response.error" class="text-red-500 mb-4 text-sm">
-            {{ obj.response.error }}
-          </p>
+          <div v-if="obj.response.error" class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50">
+            <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+            </svg>
+            <span class="sr-only">Error</span>
+            <div>{{ obj.response.error }}</div>
+          </div>
 
           <!-- Login Button -->
-          <button type="submit" class="w-full bg-teal-700 text-white py-2 rounded-lg hover:bg-teal-700 transition">
+          <button type="submit" class="w-full bg-cyan-700 text-white py-2 rounded-lg hover:bg-cyan-700 transition">
             <span class="flex items-center justify-center w-full h-full" v-if="loading">
               <ClipLoader size="20px" class="mt-1" />
             </span>
@@ -59,7 +63,7 @@ async function login() {
         <div class="mt-4 text-center">
           <p class="text-sm text-gray-600">
             Forgot your password?
-            <router-link to="/forgot-password" class="text-teal-600 hover:underline">Click here to reset</router-link>
+            <router-link to="/forgot-password" class="text-cyan-600 hover:underline">Click here to reset</router-link>
           </p>
         </div>
       </div>
