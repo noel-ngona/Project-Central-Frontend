@@ -1,70 +1,38 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
-import { useRouter, useRoute } from 'vue-router'
+import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 
-const route = useRoute()
-const token = route.params.token
-const identity = route.params.identity
-
-const obj = ref({
-    identity: identity,
-    password: "",
-    password_confirmation: "",
-    token: token,
-    loading : false,
-    response: {
-        error: "",
-        message: ""
-    }
+const obj = reactive({
+  email : '',
+  response: {
+    error: "",
+    message: ""
+  }
 })
-
-const validate = () => {
-    if (obj.value.password !== obj.value.password_confirmation) {
-        obj.value.response.error = "Passwords do not match"
-        return false
-    }
-
-    if(obj.value.password.length < 8){
-        obj.value.response.error = "Password should have least 8 characters"
-        return false
-    }
-
-    obj.value.response.error = ""
-    return true
-}
 
 const authStore = useAuthStore()
 
-const resetPassword = async () => {
-    if (validate()) {
-        obj.value.loading = true
-        obj.value.response = await authStore.resetPasswordConfirmation(obj.value.identity, obj.value.token, obj.value.password)
-        obj.value.loading = false
-    }
-}
 
+const loading = ref(false)
+async function resetPassword() {
+   loading.value = true
+   obj.response = await authStore.resetPassword(obj.email)
+   loading.value = false
+}
 </script>
 
 <template>
- <div class="flex-1 flex items-center justify-center ">
+  <div class="flex-1 flex items-center justify-center ">
       <div class="w-full max-w-md p-8">
         <h2 class="text-3xl font-semibold text-stone-600 mb-6 text-center">Reset Password</h2>
 
         <form @submit.prevent="resetPassword">
           <!-- Email Field -->
           <div class="mb-4">
-            <label for="password" class="block font-medium mb-2">Password</label>
-            <input @change="validate" type="password" id="username" v-model="obj.password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+            <label for="email" class="block font-medium mb-2">Email</label>
+            <input type="text" id="username" v-model="obj.email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Enter your username" required>
           </div>
-
-          <div class="mb-4">
-            <label for="password_confirmation" class="block font-medium mb-2">Password Confirmation</label>
-            <input @change="validate" type="password" id="password_confirmation" v-model="obj.password_confirmation" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" required>
-          </div>
-
-          <input type="hidden" id="token" v-model="obj.token">
-          <input type="hidden" id="identity" v-model="obj.identity">
 
          
           
@@ -99,8 +67,9 @@ const resetPassword = async () => {
           </p>
         </div>
       </div>
-    </div> 
+    </div>
 </template>
+
 
 
 <style>

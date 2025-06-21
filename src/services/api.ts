@@ -33,6 +33,7 @@ async function refreshAccessToken() {
     api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
   } catch (error) {
     console.error(error)
+    router.push('/login')
   }
 }
 

@@ -59,7 +59,7 @@ async function login() {
         <div class="mt-4 text-center">
           <p class="text-sm text-gray-600">
             Forgot your password?
-            <router-link to="/reset-password" class="text-teal-600 hover:underline">Click here to reset</router-link>
+            <router-link to="/forgot-password" class="text-teal-600 hover:underline">Click here to reset</router-link>
           </p>
         </div>
       </div>

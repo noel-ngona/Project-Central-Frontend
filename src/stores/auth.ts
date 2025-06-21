@@ -65,6 +65,15 @@ export const useAuthStore = defineStore('auth', {
                 console.error(error)
                 return error.response.data
             }
+        },
+        async resetPasswordConfirmation(identity: string, token: string, new_password: String){
+            try{
+                const response = await api.post('/auth/password/reset/confirm', {identity, token, new_password})
+                return response.data
+            } catch (error) {
+                console.error(error)
+                return error.response.data
+            }
         }
     }
 })
