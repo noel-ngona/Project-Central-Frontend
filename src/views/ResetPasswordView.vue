@@ -55,12 +55,12 @@ const resetPassword = async () => {
           <!-- Email Field -->
           <div class="mb-4">
             <label for="password" class="block font-medium mb-2">Password</label>
-            <input @change="validate" type="password" id="username" v-model="obj.password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
+            <input @change="validate" type="password" id="username" v-model="obj.password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Enter Password" required>
           </div>
 
           <div class="mb-4">
             <label for="password_confirmation" class="block font-medium mb-2">Password Confirmation</label>
-            <input @change="validate" type="password" id="password_confirmation" v-model="obj.password_confirmation" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
+            <input @change="validate" type="password" id="password_confirmation" v-model="obj.password_confirmation" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Enter password confirmation" required>
           </div>
 
           <input type="hidden" id="token" v-model="obj.token">

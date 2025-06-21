@@ -55,7 +55,7 @@ async function resetPassword() {
               <ClipLoader size="20px" class="mt-1" />
             </span>
             <div v-else>
-              Reset Password
+              Request Password Reset
             </div>
           </button>
         </form>
